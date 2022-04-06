@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap css -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <title>Formulaire</title>
+  </head>
+
+  <body>
+
+    <div class="container-page">
+
+      <nav>
+        <a href="#" class="logo text-color"> Coding </a>
+
+        <ul>
+          <li><a href="#">Lien 1 </a></li>
+          <li><a href="#">Lien 2 </a></li>
+          <li><a href="#">Lien 3 </a></li>
+          <li><a href="#">Lien 4 </a></li>
+
+          <li>
+            <button id="displayForm" class="btn">Se connecter </button>
+          </li>
+        </ul>
+      </nav>
+
+      <section >
+        <div class="sec-container">
+
+          <div class="form-wrapper">
+
+            <div class="card">
+              <div class="card-header">
+  
+                <div id="forLogin" class="form-header active ">Se connecter </div>
+                <div id="forRegister" class="form-header">S'inscrire </div>
+  
+              </div>
+  
+              <div class="card-body" id="formContainer">
+
+                <form  id="formLogin">
+                  <input type="text" class="form-control " placeholder="@utilisateur ">
+                  <input type="password" class="form-control " placeholder="@Mot de passe">
+                  <button class="formButon">Connexion </button>
+                </form>
+  
+                <form id="formRegister" class="toggleForm">
+                  <input type="text" class="form-control " placeholder="@utilisateur ">
+                  <input type="password" class="form-control " placeholder="@Mot de passe">
+                  <input type="password" class="form-control " placeholder="@Confirmer mot de passe">
+                  <button class="formButon"> Inscription </button>
+                </form>
+
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+      </section>
+
+    </div>
+
+    
+    <!-- Options 1 : Bootstrap Bundle with popper-->
+
+    <script >
+
+      const display = _('displayForm') ;
+      const forlogin = _('forLogin') ;
+      const forregister = _('forRegister') ;
+      const loginForm= _('formLogin') ;
+      const registerForm = _('formRegister') ;
+      const formcontainer = _('formContainer') ;
+
+
+
+      display.addEventListener('click', showForm) ;
+
+
+      forlogin.addEventListener('click',() => {
+        forregister.classList.remove('active') ;
+        forlogin.classList.add('active') ;
+
+
+        if (loginForm.classList.contains('toggleForm')) {
+          
+          formcontainer.style.transform =  'translate(0%)' ;
+          formcontainer.style.transition = 'transform .5s' ;
+
+          loginForm.classList.remove('toggleForm') ;
+          registerForm.classList.add('toggleForm') ;
+          
+        }
+
+      }) ;
+
+
+
+
+
+      forregister.addEventListener('click', () => {
+        forlogin.classList.remove('active') ;
+        forregister.classList.add('active') ;
+
+        if (registerForm.classList.contains('toggleForm')) {
+          
+          formcontainer.style.transform =  'translate(-100%)' ;
+          formcontainer.style.transition = 'transform .5s' ;
+
+          registerForm.classList.remove('toggleForm') ;
+          loginForm.classList.add('toggleForm') ;
+          
+        }
+      }) ;
+
+      function _(e){
+        return document.getElementById(e) ;
+      }
+
+
+      function showForm(){
+        document.querySelector('.form-wrapper .card').classList.toggle('show') ;
+      }
+
+
+
+    </script>  
+
+  </body>
+</html>
+
